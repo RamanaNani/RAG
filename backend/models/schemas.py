@@ -52,3 +52,34 @@ class UploadResponse(BaseModel):
     message: str
     documents: List[DocumentMetadata] = Field(default_factory=list)
     errors: List[str] = Field(default_factory=list)
+
+class TextBlock(BaseModel):
+    """A block of text from a document."""
+    text: str
+    page: int
+    section: Optional[str] = None
+
+class ImageAsset(BaseModel):
+    """An image asset from a document."""
+    image_url: str # UUID
+    session_id: UUID
+    document_id: UUID
+    page: int
+    image_path: str
+    format: str
+
+class DocumentContent(BaseModel):
+    """The content of a document."""
+    text_blocks: List[TextBlock]
+    images: List[ImageAsset]
+
+class ChunkMetadata(BaseModel):
+    """Metadata for a chunk of content."""
+    chunk_id: str
+    session_id: UUID
+    document_id: UUID
+    page: int
+    chunk_index: int
+    text: str
+    image_refs: List[str] = Field(default_factory=list)
+    embedding_model: str = "bge-m3"

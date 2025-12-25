@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
 from api import health, upload, chat
 from services.session_manager import session_manager

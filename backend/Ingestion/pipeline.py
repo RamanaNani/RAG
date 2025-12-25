@@ -7,6 +7,7 @@ from Ingestion.loader import FileLoader
 from Ingestion.text_extractor import PDFTextExtractor, DOCXTextExtractor, TXTTextExtractor, MDTextExtractor
 from Ingestion.image_extractor import ImageExtractor
 from Ingestion.embedder import Embedder
+from Ingestion.chunker import Chunker
 from Ingestion.registry import QdrantRegistry
 from core.logging import log_error, LogCategory, log_event
 
@@ -28,4 +29,3 @@ class IngestionPipeline:
         self.embedder = Embedder(model_name=embedder_model)
         self.registry = QdrantRegistry(url=registry_url, collection_name=qdrant_collection)
         self.chunker = Chunker()
-        

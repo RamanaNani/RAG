@@ -1,0 +1,16 @@
+mkdir -p tests/data
+
+cat << 'EOF' > tests/data/sample.txt
+INTRODUCTION
+
+This is a simple text file used to test the ingestion pipeline.
+It contains multiple sentences. These sentences should be chunked
+based on character length and overlap.
+
+This is another paragraph. It talks about a completely different
+topic. The goal is to verify that page boundaries are preserved.
+
+CONCLUSION
+
+This is the final paragraph of the test document.
+EOF
